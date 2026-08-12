@@ -23,7 +23,7 @@ import java.util.UUID
 
 class PhotoPlayerViewModel(
 	private val api: ApiClient,
-	private val userPreferences: UserPreferences
+	val userPreferences: UserPreferences
 ) : ViewModel() {
 	private var album: List<BaseItemDto> = emptyList()
 	private var albumIndex = -1

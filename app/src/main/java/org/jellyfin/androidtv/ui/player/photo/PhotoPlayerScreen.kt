@@ -10,6 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import org.jellyfin.androidtv.data.service.BackgroundService
+import org.jellyfin.androidtv.preference.UserPreferences
 import org.jellyfin.androidtv.ui.ScreensaverLock
 import org.jellyfin.androidtv.ui.navigation.ProvideRouter
 import org.jellyfin.androidtv.ui.settings.Routes
@@ -42,6 +43,11 @@ fun PhotoPlayerScreen() {
 	) {
 		PhotoPlayerContent(
 			item = item,
+			presentationActive = presentationActive,
+			animationDuration = viewModel.userPreferences[UserPreferences.photoPlayerPresentationDelay],
+			animatePhoto = viewModel.userPreferences[UserPreferences.photoPlayerAnimatePhotos],
+			animatePanStrength = viewModel.userPreferences[UserPreferences.photoPlayerAnimatePanStrength],
+			animateZoomStrength = viewModel.userPreferences[UserPreferences.photoPlayerAnimateZoomStrength]
 		)
 
 		PhotoPlayerOverlay(
@@ -55,7 +61,7 @@ fun PhotoPlayerScreen() {
 			SettingsDialog(
 				visible = settingsVisible,
 				onDismissRequest = {
-					viewModel.setSettingsVisible(false);
+					viewModel.setSettingsVisible(false)
 				}
 			) {
 				SettingsRouterContent()
