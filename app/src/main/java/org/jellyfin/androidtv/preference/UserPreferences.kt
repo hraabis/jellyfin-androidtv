@@ -135,6 +135,11 @@ class UserPreferences(context: Context) : SharedPreferenceStore(
 		var audioNightMode = enumPreference("audio_night_mode", false)
 
 		/**
+		 * Enable AC3
+		 */
+		var ac3Enabled = booleanPreference("pref_bitstream_ac3", true)
+
+		/**
 		 * AC3 bitstream device profile override.
 		 */
 		var bitstreamAc3 = enumPreference("bitstream_ac3_mode", BitstreamAudioMode.AUTO)
@@ -309,14 +314,19 @@ class UserPreferences(context: Context) : SharedPreferenceStore(
 		var softwareCodecsEnabled = booleanPreference("software_codecs_enabled", true)
 
 		/**
+		 * Integrate with androidx.tvprovider for the Android TV home screen.
+		 */
+		var tvProviderEnabled = booleanPreference("tv_provider_enabled", true)
+
+		/**
 		 * Stores the interval for the photo player.
 		 */
 		var photoPlayerPresentationDelay = longPreference("photo_player_presentation_delay", 8000)
 
 		/**
-		 * Integrate with androidx.tvprovider for the Android TV home screen.
+		 * Enable animation of photos.
 		 */
-		var tvProviderEnabled = booleanPreference("tv_provider_enabled", true)
+		var photoPlayerAnimatePhotos = booleanPreference("photo_player_animate_photos", false)
 	}
 
 	init {

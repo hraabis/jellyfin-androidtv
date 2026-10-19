@@ -17,6 +17,8 @@ import androidx.compose.ui.unit.IntSize
 import androidx.core.content.getSystemService
 import coil3.compose.AsyncImage
 import org.jellyfin.androidtv.util.BlurHashDecoder
+import org.jellyfin.sdk.model.api.BaseItemDto
+//import org.jellyfin.androidtv.ui.photoAnimateWithZoomAndPan
 
 @Composable
 fun AsyncImage(
@@ -27,6 +29,12 @@ fun AsyncImage(
 	aspectRatio: Float = 1f,
 	blurHashResolution: Int = 32,
 	scaleType: ContentScale = ContentScale.Fit,
+	presentationActive: Boolean = false,
+	animatePhoto: Boolean = false,
+	animationDuration: Long? = null,
+	item: BaseItemDto? = null,
+	screenWidth: Int? = null,
+	screenHeight: Int? = null
 ) {
 	val isLowRamDevice = LocalContext.current.getSystemService<ActivityManager>()?.isLowRamDevice == true
 	if (!isLowRamDevice && blurHash != null && placeholder == null) {
@@ -48,6 +56,9 @@ fun AsyncImage(
 		)
 	}
 	else if (placeholder != null) {
+		//if (presentationActive && animatePhoto) {
+		//this.photoAnimateWithZoomAndPan(animationDuration, item, screenWidth, screenHeight)
+		//}
 	    Image(
 			painter = painterResource(placeholder),
 			contentDescription = null,
